@@ -8,8 +8,8 @@ namespace BussineTateti.Models
 {
     class Player
     {
-        public string Name { get; init; }
-        public int type { get; init; }
+        public string Name { get; set; }
+        public int type { get; set; }
 
         public Player( string name ,int type )
         {

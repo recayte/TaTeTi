@@ -47,9 +47,15 @@ namespace BussineTateti.Models
         #endregion
 
         #region AssignSymbol
-        public void AssignSymbol(string Symbol, int type)
+        public bool AssignSymbol(string Symbol, int type)
         {
-            Player player = new(Symbol, type);
+            bool validar = false;
+            if (!player.Name.Contains(Symbol))
+            {
+                player = new(Symbol, type);
+                validar = true;
+            } 
+            return validar;
         }
         #endregion
 
