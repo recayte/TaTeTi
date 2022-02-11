@@ -8,24 +8,26 @@ namespace BussineTateti.Models
 {
     class Rules
     {
-        public Player player { get; set; }
-        public Table table { get; set; }
+        private Player player1, player2;
+        private Table table;
 
         // conecta entre jugador y tablero 
-        public Rules(Player IPlayer, Table ITable)
+        public Rules()
         {
-            this.player = IPlayer;
-            this.table = ITable;
+            this.player1 = new Player("X");
+            this.player2 = new Player("O");
+            this.table = new Table();
         }
 
-        #region Winner
-        public string Winner(string player)
+        #region Winner      
+        public string CheckWinner(Player player)
         {
             string ganador = "";
-            (int turn, bool validate) resultado = validateCantTurn(2);
+            (int turn, bool validate) resultado = ValidateCantTurn(2);
 
             if (resultado.validate == true) 
             { 
+                //no necesito que 
                 ganador = table.VerifyWinner(player);
             }
 
@@ -34,9 +36,9 @@ namespace BussineTateti.Models
         #endregion
 
         #region TurnNext
-        public bool TurnNext(int row, int column, string player)
+        public bool Play(int row, int column, string player)
         {
-            (int turn, bool validate) resultado = validateCantTurn(1);
+            (int turn, bool validate) resultado = ValidateCantTurn(1);
 
             if (resultado.validate == true)
             {
@@ -46,24 +48,23 @@ namespace BussineTateti.Models
         }
         #endregion
 
-        #region AssignSymbol
-        public bool AssignSymbol(string Symbol, int type)
-        {
-            bool validar = false;
-            if (!player.Name.Contains(Symbol))
-            {
-                player = new(Symbol, type);
-                validar = true;
-            } 
-            return validar;
-        }
-        #endregion
+        //#region AssignSymbol
+        //public bool AssignSymbol(string Symbol, int type)
+        //{
+        //    bool validar = false;
+        //    if (!player.Name.Contains(Symbol))
+        //    {
+        //        player = new(Symbol, type);
+        //        validar = true;
+        //    } 
+        //    return validar;
+        //}
+        //#endregion
 
         #region validateCantTurn
-        // valida la cantidad de movimiento 
-        public (int turn, bool validate) validateCantTurn(int condition)
+        // valida la cantidad de movimiento , se tienen que hacer dos validaciones distintas
+        public (int turn, bool validate) ValidateCantTurn(int condition)
         {
-
             bool validate = true;
             int turn = table.GetTurn();
 

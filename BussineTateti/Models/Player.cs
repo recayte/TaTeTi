@@ -8,13 +8,11 @@ namespace BussineTateti.Models
 {
     class Player
     {
-        public string Name { get; set; }
-        public int type { get; set; }
+        public string Token { get; set; }
 
-        public Player( string name ,int type )
+        public Player( string token )
         {
-            this.Name = name;
-            this.type = type;
+            this.Token = token;
         }       
 
     }

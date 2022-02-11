@@ -27,47 +27,52 @@ namespace BussineTateti.Models
         #endregion
 
         #region VerifyVerticals
-        public void VerifyVerticals(string player)
+        public void VerifyVerticals(Player player)
         {
             for (int fila = 0; fila < 3; fila++)
             {
-                if (TableTaTeTi[0, fila] == player && TableTaTeTi[0, fila] == TableTaTeTi[1, fila] && TableTaTeTi[1, fila] == TableTaTeTi[2, fila])
+                if (TableTaTeTi[0, fila] == player.Token && TableTaTeTi[0, fila] == TableTaTeTi[1, fila] && TableTaTeTi[1, fila] == TableTaTeTi[2, fila])
                 {
-                    Ganador = player;
+                    Ganador = player.Token;
+                    return;
                 }
             }
         }
         #endregion
 
         #region VerifyHorizontals
-        public void VerifyHorizontals(string player)
+        public void VerifyHorizontals(Player player)
         {        
             for (int fila = 0; fila < 3; fila++)
             {
-                if (TableTaTeTi[fila, 0] == player && TableTaTeTi[fila, 0] == TableTaTeTi[fila, 1] && TableTaTeTi[fila, 1] == TableTaTeTi[fila, 2])
+                if (TableTaTeTi[fila, 0] == player.Token && TableTaTeTi[fila, 0] == TableTaTeTi[fila, 1] && TableTaTeTi[fila, 1] == TableTaTeTi[fila, 2])
                 {
-                    Ganador = player;
+                    Ganador = player.Token;
+                    return;
                 }
             }
         }
         #endregion 
 
         #region VerifyDiagonal
-        public void VerifyDiagonal(string player)
+        private void VerifyDiagonal(Player player)
         {
-            if (TableTaTeTi[0, 0] == player && TableTaTeTi[0, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[2, 2])
+            if (TableTaTeTi[0, 0] == player.Token && TableTaTeTi[0, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[2, 2])
             {
-                Ganador = player;
+                Ganador = player.Token;
+                return;
             }
-            else if (TableTaTeTi[2, 0] == player && TableTaTeTi[2, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[0, 2])
+            else if (TableTaTeTi[2, 0] == player.Token && TableTaTeTi[2, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[0, 2])
             {
-                Ganador = player;
+                Ganador = player.Token;
+                return;
             }
         }
         #endregion
 
         #region VerifyWinner
-        public string VerifyWinner(string player)
+        //no deberia pasar el jugador 
+        public string VerifyWinner(Player player)
         {
                 VerifyVerticals(player);
             if(Ganador == null)
