@@ -10,7 +10,7 @@ namespace BussineTateti.Models
     {
         private string[,] TableTaTeTi = new string[3, 3];
         private int Turn  { get; set; }
-        private string Ganador { get; set; }
+        private string Winner { get; set; }
 
         #region AddMovement
         public bool AddMovement(int row, int column, string player)
@@ -27,13 +27,13 @@ namespace BussineTateti.Models
         #endregion
 
         #region VerifyVerticals
-        public void VerifyVerticals(Player player)
+        private void VerifyVerticals(Player player)
         {
             for (int fila = 0; fila < 3; fila++)
             {
                 if (TableTaTeTi[0, fila] == player.Token && TableTaTeTi[0, fila] == TableTaTeTi[1, fila] && TableTaTeTi[1, fila] == TableTaTeTi[2, fila])
                 {
-                    Ganador = player.Token;
+                    Winner = player.Token;
                     return;
                 }
             }
@@ -41,13 +41,13 @@ namespace BussineTateti.Models
         #endregion
 
         #region VerifyHorizontals
-        public void VerifyHorizontals(Player player)
+        private void VerifyHorizontals(Player player)
         {        
             for (int fila = 0; fila < 3; fila++)
             {
                 if (TableTaTeTi[fila, 0] == player.Token && TableTaTeTi[fila, 0] == TableTaTeTi[fila, 1] && TableTaTeTi[fila, 1] == TableTaTeTi[fila, 2])
                 {
-                    Ganador = player.Token;
+                    Winner = player.Token;
                     return;
                 }
             }
@@ -59,12 +59,12 @@ namespace BussineTateti.Models
         {
             if (TableTaTeTi[0, 0] == player.Token && TableTaTeTi[0, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[2, 2])
             {
-                Ganador = player.Token;
+                Winner = player.Token;
                 return;
             }
             else if (TableTaTeTi[2, 0] == player.Token && TableTaTeTi[2, 0] == TableTaTeTi[1, 1] && TableTaTeTi[1, 1] == TableTaTeTi[0, 2])
             {
-                Ganador = player.Token;
+                Winner = player.Token;
                 return;
             }
         }
@@ -75,12 +75,12 @@ namespace BussineTateti.Models
         public string VerifyWinner(Player player)
         {
                 VerifyVerticals(player);
-            if(Ganador == null)
+            if(Winner == null)
                 VerifyHorizontals(player);
-            if (Ganador == null)
+            if (Winner == null)
                 VerifyDiagonal(player);
 
-            return Ganador;
+            return Winner;
         }
         #endregion
 

@@ -19,64 +19,61 @@ namespace BussineTateti.Models
             this.table = new Table();
         }
 
-        #region Winner      
+        #region CheckWinner      
         public string CheckWinner(Player player)
         {
-            string ganador = "";
-            (int turn, bool validate) resultado = ValidateCantTurn(2);
-
-            if (resultado.validate == true) 
-            { 
+            string winner = "";
+            int turn = table.GetTurn();
+            if (ValidateTurnMax(turn))
+            {
                 //no necesito que 
-                ganador = table.VerifyWinner(player);
+                winner = table.VerifyWinner(player);
             }
 
-            return ganador;
+            return winner;
         }
         #endregion
 
-        #region TurnNext
+        #region Play
         public bool Play(int row, int column, string player)
         {
-            (int turn, bool validate) resultado = ValidateCantTurn(1);
+            int turn = table.GetTurn();
+            bool validar = true;
 
-            if (resultado.validate == true)
+            if (RangeTurn(turn))
             {
-                resultado.validate = table.AddMovement(row, column, player);
-            } 
-            return resultado.validate;
+                validar = table.AddMovement(row, column, player);
+            }
+            return validar;
         }
         #endregion
 
-        //#region AssignSymbol
-        //public bool AssignSymbol(string Symbol, int type)
-        //{
-        //    bool validar = false;
-        //    if (!player.Name.Contains(Symbol))
-        //    {
-        //        player = new(Symbol, type);
-        //        validar = true;
-        //    } 
-        //    return validar;
-        //}
-        //#endregion
-
-        #region validateCantTurn
-        // valida la cantidad de movimiento , se tienen que hacer dos validaciones distintas
-        public (int turn, bool validate) ValidateCantTurn(int condition)
+        #region RangeTurn
+        public bool RangeTurn(int turn)
         {
             bool validate = true;
-            int turn = table.GetTurn();
-
-            //Si la condicion es 1 entonces solo se valida que el turno sea menor
-            //Si la condicion es 2 entonces se valida que el turno este entre 5 a 9 turnos
-            if ((turn > 9 && condition == 1) || ((turn > 9 || turn < 4) && condition == 2))
+            if (turn > 9 || turn < 4) 
             {
                 validate = false;
             }
-            return (turn, validate);
+            return validate;
         }
         #endregion
+
+        #region ValidateTurnMax
+        public bool ValidateTurnMax(int turn)
+        {
+            bool validate = true;
+            if (turn > 9 )
+            {
+                validate = false;
+            }
+            return validate;
+        }
+        #endregion
+
+       
+
 
 
     }
