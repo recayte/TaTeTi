@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace BussineTateti.Models
 {
-    class Rules
+    public class Rules
     {
         private Player player1, player2;
         private Table table;
+
+
+        // 
 
         // conecta entre jugador y tablero 
         public Rules()
@@ -20,7 +23,7 @@ namespace BussineTateti.Models
         }
 
         #region CheckWinner      
-        public string CheckWinner(Player player)
+        private string CheckWinner(Player player)
         {
             string winner = "";
             int turn = table.GetTurn();
@@ -35,7 +38,7 @@ namespace BussineTateti.Models
         #endregion
 
         #region Play
-        public bool Play(int row, int column, string player)
+        private bool Play(int row, int column, Player player)
         {
             int turn = table.GetTurn();
             bool validar = true;
@@ -47,6 +50,20 @@ namespace BussineTateti.Models
             return validar;
         }
         #endregion
+       
+        public string PlayGame(int row, int column )
+        {
+            string winner= "";
+            // comunicar los 5 estados , Inum para devolver los estado 
+            // GetGamePlayer() me devuelve el jugador que debe jugar 
+            Player player = new Player("asd"); // despues hago la funcion para llamar al jugador
+            if (Play(row, column, player))
+            {
+                winner= CheckWinner(player);              
+            }
+            
+            return winner;
+        }
 
         #region RangeTurn
         public bool RangeTurn(int turn)
@@ -72,7 +89,7 @@ namespace BussineTateti.Models
         }
         #endregion
 
-       
+         // metodo que llame a agregar movimiento , validar winner
 
 
 

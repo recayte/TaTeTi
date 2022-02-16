@@ -1,0 +1,12 @@
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\bin\Debug\net5.0\BussineTateti.deps.json
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\bin\Debug\net5.0\BussineTateti.dll
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\bin\Debug\net5.0\ref\BussineTateti.dll
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\bin\Debug\net5.0\BussineTateti.pdb
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.csproj.AssemblyReference.cache
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.AssemblyInfoInputs.cache
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.AssemblyInfo.cs
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.csproj.CoreCompileInputs.cache
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.dll
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\ref\BussineTateti.dll
+C:\Users\srecayte.USERSAD\source\repos\TatetiApi\BussineTateti\obj\Debug\net5.0\BussineTateti.pdb

@@ -1253,6 +1253,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
+      },
+      "BussineTateti/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/BussineTateti.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BussineTateti.dll": {}
+        }
       }
     }
   },
@@ -4941,10 +4951,16 @@
         "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xpath.xmldocument.nuspec"
       ]
+    },
+    "BussineTateti/1.0.0": {
+      "type": "project",
+      "path": "../BussineTateti/BussineTateti.csproj",
+      "msbuildProject": "../BussineTateti/BussineTateti.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BussineTateti >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.9.4",
       "NUnit >= 3.13.1",
       "NUnit3TestAdapter >= 3.17.0",
@@ -4979,7 +4995,11 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\srecayte.USERSAD\\source\\repos\\TatetiApi\\BussineTateti\\BussineTateti.csproj": {
+              "projectPath": "C:\\Users\\srecayte.USERSAD\\source\\repos\\TatetiApi\\BussineTateti\\BussineTateti.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

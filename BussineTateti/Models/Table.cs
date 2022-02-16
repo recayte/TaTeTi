@@ -6,25 +6,29 @@ using System.Threading.Tasks;
 
 namespace BussineTateti.Models
 {
-    class Table
+    internal class Table
     {
+        //almacenar el ultimo jugador y asignar jugadores por turnos
         private string[,] TableTaTeTi = new string[3, 3];
         private int Turn  { get; set; }
         private string Winner { get; set; }
 
+
         #region AddMovement
-        public bool AddMovement(int row, int column, string player)
+        public bool AddMovement(int row, int column, Player player)
         {
             bool resultado = false;
             if (TableTaTeTi[row, column] == null)
             {
-                TableTaTeTi[row, column] = player;
+                TableTaTeTi[row, column] = player.Token;
                 Turn += 1;
                 resultado = true;
             }            
             return resultado;
         }
         #endregion
+
+      // manejo de jugador 
 
         #region VerifyVerticals
         private void VerifyVerticals(Player player)
