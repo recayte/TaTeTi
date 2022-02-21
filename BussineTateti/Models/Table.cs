@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussineTateti.Models
 {
-    public class Table
+    internal class Table
     { 
         // privadas en en miniusculas
         // funciones bloqueada , fuera de rango , si esta lleno 
@@ -134,15 +134,7 @@ namespace BussineTateti.Models
             return Status.statusOk;
         }
         #endregion
-
-        #region ResettableTaTeTi
-        public void ResettableTaTeTi()
-        {
-            for (int fila = 0; fila < 3; fila++)
-                for (int columna = 0; columna < 3; columna++)
-                    tableTaTeTi[fila, columna] = "";           
-        }
-        #endregion 
+        
 
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussineTateti.Models
 {
-    public class Player
+    internal class Player
     {
         public string Token { get; set; }
 
