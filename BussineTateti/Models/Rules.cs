@@ -10,8 +10,7 @@ namespace BussineTateti.Models
     {
         private Player player1, player2;
         private Table table;
-
-
+        private Player playerActive;  
         // 
 
         // conecta entre jugador y tablero 
@@ -19,79 +18,35 @@ namespace BussineTateti.Models
         {
             this.player1 = new Player("X");
             this.player2 = new Player("O");
+            this.playerActive = new Player("O");
             this.table = new Table();
         }
-
-        #region CheckWinner      
-        private string CheckWinner(Player player)
-        {
-            string winner = "";
-            int turn = table.GetTurn();
-            if (ValidateTurnMax(turn))
+         
+        #region PlayGame
+        public Status PlayGame(int row, int column)
+        {             
+            Status status = table.ValidateTable(row, column);
+            if (status != Status.statusOk)
             {
-                //no necesito que 
-                winner = table.VerifyWinner(player);
+                return status;
             }
-
-            return winner;
+            Player player = GetCurrentPlayer();
+            table.AddMovement(row, column, player);
+            return table.VerifyWinner(player);
         }
         #endregion
 
-        #region Play
-        private bool Play(int row, int column, Player player)
+        #region GetCurrentPlayer
+        private Player GetCurrentPlayer()
         {
-            int turn = table.GetTurn();
-            bool validar = true;
-
-            if (RangeTurn(turn))
-            {
-                validar = table.AddMovement(row, column, player);
-            }
-            return validar;
+          Player player = playerActive;
+          if (player.Token == "X")
+                player.Token = "O";
+          else
+                player.Token = "X";
+          return player;
         }
-        #endregion
-       
-        public string PlayGame(int row, int column )
-        {
-            string winner= "";
-            // comunicar los 5 estados , Inum para devolver los estado 
-            // GetGamePlayer() me devuelve el jugador que debe jugar 
-            Player player = new Player("asd"); // despues hago la funcion para llamar al jugador
-            if (Play(row, column, player))
-            {
-                winner= CheckWinner(player);              
-            }
-            
-            return winner;
-        }
-
-        #region RangeTurn
-        public bool RangeTurn(int turn)
-        {
-            bool validate = true;
-            if (turn > 9 || turn < 4) 
-            {
-                validate = false;
-            }
-            return validate;
-        }
-        #endregion
-
-        #region ValidateTurnMax
-        public bool ValidateTurnMax(int turn)
-        {
-            bool validate = true;
-            if (turn > 9 )
-            {
-                validate = false;
-            }
-            return validate;
-        }
-        #endregion
-
-         // metodo que llame a agregar movimiento , validar winner
-
-
+        #endregion 
 
     }
 
